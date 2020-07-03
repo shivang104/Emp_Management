@@ -6,33 +6,46 @@
         xmlns:local="clr-namespace:Emp_Management"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="600">
-    <Grid Margin="0,0,0,-1">
+    <Grid Margin="0,0,2,-1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="315*"/>
-            <ColumnDefinition Width="277*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="29*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Employee ID" HorizontalAlignment="Left" Margin="14,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.373,3.764" Width="103" FontWeight="Bold" Grid.Column="1" Height="26"/>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="49,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.71,0.555" FontWeight="Bold" Grid.Column="2" Height="26" Width="43"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="49,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.71,0.555" FontWeight="Bold" Grid.Column="3" Height="26" Width="43"/>
         <TextBox x:Name="empid" HorizontalAlignment="Left" Height="23" Margin="96,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox x:Name="empname" HorizontalAlignment="Left" Height="23" Margin="106,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+        <TextBox x:Name="empname" HorizontalAlignment="Left" Height="23" Margin="106,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="3"/>
         <Label Content="" HorizontalAlignment="Left" Margin="40,189,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="10"/>
-        <Label Content="Department" HorizontalAlignment="Left" Margin="45,205,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="2" Height="26" Width="78"/>
-        <Label Content="Gender" HorizontalAlignment="Left" Margin="27,197,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1" Height="26" Width="51"/>
-        <CheckBox x:Name="male" Content="Male" HorizontalAlignment="Left" Margin="96,203,0,0" VerticalAlignment="Top" FontStyle="Italic" Checked="male_Checked" Grid.Column="1" Height="15" Width="45"/>
-        <CheckBox x:Name="female" Content="Female" HorizontalAlignment="Left" Margin="96,223,0,0" VerticalAlignment="Top" FontStyle="Italic" Checked="female_Checked" Grid.Column="1" Height="15" Width="57"/>
-        <ComboBox x:Name="empdepartment" HorizontalAlignment="Left" Margin="128,203,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="22" SelectedIndex="0">
-            <ComboBoxItem Content="TechOps" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="FES" HorizontalAlignment="Left" Width="118"/>
-                <ComboBoxItem Content="Proteas" HorizontalAlignment="Left" Width="118"/>
-                <ComboBoxItem Content="HR" HorizontalAlignment="Left" Width="118"/>
-        </ComboBox>
-        <Button x:Name="save_btn" Content="Save" HorizontalAlignment="Left" Margin="130,310,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" FontWeight="Bold" Grid.Column="1" Height="20"/>
-        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Margin="250,310,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="update_btn_Click" Grid.ColumnSpan="2" Grid.Column="1" Height="20"/>
-        <Button x:Name="delete_btn" Content="Delete" HorizontalAlignment="Left" Margin="65,310,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="delete_btn_Click" Grid.Column="2" Height="20"/>
-        <Button x:Name="clear_btn" Content="Clear" HorizontalAlignment="Left" Margin="173,310,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="clear_btn_Click" Grid.Column="2" Height="20"/>
-        <TextBlock x:Name="msg" HorizontalAlignment="Left" Height="155" Margin="67,365,0,0" TextWrapping="Wrap" Text="Welcome!" VerticalAlignment="Top" Width="441" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="1"/>
-        <Button x:Name="GetDetails_btn" Content="Get Details" HorizontalAlignment="Left" Margin="14,310,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="GetDetails_btn_Click" Grid.Column="1" Height="20"/>
-
+        <Label Content="Department" HorizontalAlignment="Left" Margin="49,122,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="3" Height="26" Width="78" RenderTransformOrigin="0.513,-1.731"/>
+        <Label Content="Gender" HorizontalAlignment="Left" Margin="25,114,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1" Height="26" Width="51"/>
+        <CheckBox x:Name="male" Content="Male" HorizontalAlignment="Left" Margin="96,120,0,0" VerticalAlignment="Top" FontStyle="Italic" Checked="male_Checked" Grid.Column="1" Height="15" Width="45"/>
+        <CheckBox x:Name="female" Content="Female" HorizontalAlignment="Left" Margin="96,140,0,0" VerticalAlignment="Top" FontStyle="Italic" Checked="female_Checked" Grid.Column="1" Height="15" Width="57"/>
+        <ComboBox x:Name="empdepartment" HorizontalAlignment="Left" Margin="128,122,0,0" VerticalAlignment="Top" Width="120" Grid.Column="3" Height="22" SelectedIndex="0"/>
+        <Button x:Name="save_btn" Content="Save" HorizontalAlignment="Left" Margin="141,189,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" FontWeight="Bold" Grid.Column="1" Height="20"/>
+        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Margin="250,189,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="update_btn_Click" Grid.ColumnSpan="3" Grid.Column="1" Height="20"/>
+        <Button x:Name="delete_btn" Content="Delete" HorizontalAlignment="Left" Margin="60,189,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="delete_btn_Click" Grid.Column="3" Height="20"/>
+        <Button x:Name="clear_btn" Content="Clear" HorizontalAlignment="Left" Margin="165,189,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="clear_btn_Click" Grid.Column="3" Height="20"/>
+        <TextBlock x:Name="msg" HorizontalAlignment="Left" Height="155" Margin="85,395,0,0" TextWrapping="Wrap" Text="Welcome!" VerticalAlignment="Top" Width="441" FontWeight="Bold" Grid.ColumnSpan="3" Grid.Column="1">
+            <TextBlock.Background>
+                <ImageBrush/>
+            </TextBlock.Background>
+        </TextBlock>
+        <Button x:Name="GetDetails_btn" Content="Get Details" HorizontalAlignment="Left" Margin="25,189,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="GetDetails_btn_Click" Grid.Column="1" Height="20"/>
+        <Label x:Name="addempl" Grid.ColumnSpan="2" Content="Add Employee :" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="155" FontWeight="Bold" FontStyle="Italic" Height="41" FontSize="20" Background="{x:Null}"/>
+        <Label x:Name="adddept" Grid.ColumnSpan="2" Content="Add Department :" HorizontalAlignment="Left" Margin="25,220,0,0" VerticalAlignment="Top" Width="265" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
+        <Label Grid.ColumnSpan="2" Content="Department ID" HorizontalAlignment="Left" Margin="14,265,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="deptid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="108,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Department Name" Grid.Column="3" HorizontalAlignment="Left" Margin="20,265,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="140,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="deptname" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="140,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Grid.ColumnSpan="2" Content="Deptt. Manager" HorizontalAlignment="Left" Margin="9,306,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="deptmanager" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="108,306,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="getdetails_btn2" Grid.ColumnSpan="2" Content="Get Details" HorizontalAlignment="Left" Margin="33,350,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1" FontWeight="Bold"/>
+        <Button x:Name="save_btn2" Grid.ColumnSpan="2" Content="Save" HorizontalAlignment="Left" Margin="141,350,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="save_btn2_Click"/>
+        <Button x:Name="update_btn2" Grid.ColumnSpan="4" Content="Update" HorizontalAlignment="Left" Margin="250,350,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="update_btn2_Click"/>
+        <Button x:Name="delete_btn2" Content="Delete" Grid.Column="3" HorizontalAlignment="Left" Margin="65,350,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="delete_btn2_Click"/>
+        <Button x:Name="clear_btn2" Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Margin="165,350,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="clear_btn2_Click"/>
     </Grid>
 </Window>

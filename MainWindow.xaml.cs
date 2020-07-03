@@ -22,10 +22,22 @@ namespace Emp_Management
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Employee> employees = new List<Employee>();
+        public List<Employee> employees = new List<Employee>();
+        public List<Department> departments = new List<Department>
+        {
+            new Department {Depid = "1", Depname = "FES", Depmanager = "Mr.Rakesh Gandhi"},
+            new Department {Depid = "2", Depname = "TechOps", Depmanager = "Mr.Karan Wadhawan"},
+            new Department {Depid = "3", Depname = "Proteas", Depmanager = "Ms.Dhwani Bhatia"},
+            new Department {Depid = "4", Depname = "HR", Depmanager = "Ms.Priyanka Gubrele"},
+        };
+
         public MainWindow()
         {
             InitializeComponent();
+            empdepartment.ItemsSource = departments;
+            empdepartment.DisplayMemberPath = "Depname";
+            empdepartment.SelectedValuePath = "Depname";
+            empdepartment.SelectedIndex = 0;
         }
  
         public void Button_Click(object sender, RoutedEventArgs e)
@@ -41,8 +53,8 @@ namespace Emp_Management
             {
                 employee.gender = "Female";
             }
-            ComboBoxItem comboBoxItem = (ComboBoxItem)empdepartment.SelectedItem;
-            employee.department = comboBoxItem.Content.ToString();
+ 
+            employee.department = empdepartment.SelectedValue.ToString();
 
 
             if ((from emp in employees where emp.empid == empid.Text select emp).Count() > 0)
@@ -87,13 +99,6 @@ namespace Emp_Management
         {
             empid.IsEnabled = true;
             string id = empid.Text;
-            //foreach (Employee emp in employees)
-            //{
-            //    if (emp.empid == id)
-            //    {
-            //        employees.Remove(emp);
-            //    }
-            //}
             IEnumerable<Employee> employeetodelete = from emp in employees where emp.empid == id select emp;
             employees = employees.Except(employeetodelete).ToList();
             msg.Text = "Record deleted.";
@@ -124,23 +129,14 @@ namespace Emp_Management
                     female.IsChecked = true;
                 }
 
-                if (empl.department == "TechOps")
-                {
-                    empdepartment.SelectedIndex = 0;
-                }
-                else if (empl.department == "FES")
-                {
-                    empdepartment.SelectedIndex = 1;
-                }
-                else if (empl.department == "Proteas")
-                {
-                    empdepartment.SelectedIndex = 2;
-                }
-                else if (empl.department == "HR")
-                {
-                    empdepartment.SelectedIndex = 3;
+                foreach (Department dep in departments){
+                    if (empl.department == dep.Depname)
+                    {
+                        empdepartment.SelectedValue = dep.Depname;
+                    }
                 }
                 empid.IsEnabled = false;
+                msg.Text = "Record found.";
             }
         }
 
@@ -151,8 +147,7 @@ namespace Emp_Management
             Employee empl = employeetoupdate.First();
             empl.name = empname.Text;
             ComboBoxItem comboBoxItem = (ComboBoxItem)empdepartment.SelectedItem;
-            empl.department = comboBoxItem.Content.ToString();
-            //empl.department = empdepartment.SelectedValue.ToString();
+            empl.department = empdepartment.SelectedValue.ToString();
             if (male.IsChecked == true)
             {
                 empl.gender = "Male";
@@ -164,5 +159,73 @@ namespace Emp_Management
             employees.Add(empl);
             msg.Text = "Record updated.";
         }
+
+        public void save_btn2_Click(object sender, RoutedEventArgs e)
+        {
+            Department department = new Department();
+            department.Depid = deptid.Text;
+            department.Depname = deptname.Text;
+            department.Depmanager = deptmanager.Text;
+  
+            if ((from dep in departments where dep.Depid == deptid.Text select dep).Count() > 0)
+            {
+                msg.Text = "Record not saved. Department already exists.";
+            }
+            else
+            {
+                departments.Add(department);
+                msg.Text = "Record saved.";
+            }
+        }
+
+        public void clear_btn2_Click(object sender, RoutedEventArgs e)
+        {
+            deptid.Text = null;
+            deptname.Text = null;
+            deptmanager.Text = null;
+            deptid.IsEnabled = true;
+            msg.Text = null;
+        }
+
+        private void delete_btn2_Click(object sender, RoutedEventArgs e)
+        {
+            deptid.IsEnabled = true;
+            string id = deptid.Text;
+            IEnumerable<Department> departmenttodelete = from dep in departments where dep.Depid == id select dep;
+            departments = departments.Except(departmenttodelete).ToList();
+            msg.Text = "Record deleted.";
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string id = deptid.Text;
+            if ((from dep in departments where dep.Depid == deptid.Text select dep).Count() == 0)
+            {
+                msg.Text = "Record does not exists.";
+            }
+            else
+            {
+                IEnumerable<Department> departmenttoupdate = from dep in departments where dep.Depid == id select dep;
+                Department dept = departmenttoupdate.First();
+                deptid.Text = dept.Depid;
+                deptname.Text = dept.Depname;
+                deptmanager.Text = dept.Depmanager;
+                empid.IsEnabled = false;
+                msg.Text = "Record found.";
+            }
+        }
+
+        private void update_btn2_Click(object sender, RoutedEventArgs e)
+        {
+
+            string id = deptid.Text;
+            IEnumerable<Department> departmenttoupdate = from dep in departments where dep.Depid == id select dep;
+            Department dept = departmenttoupdate.First();
+            dept.Depname = deptname.Text;
+            dept.Depmanager = deptmanager.Text;
+            departments.Add(dept);
+            msg.Text = "Record updated.";
+        }
+
     }
 }
